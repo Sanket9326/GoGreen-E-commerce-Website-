@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>Go-GREEN</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/core-img/favicon.ico">
+
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="s" href="style1.css">
+     
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Flip Cards with Images and Info</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        .card-container {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+        }
+        .card {
+          position: relative;
+          width: 300px;
+          height: 400px;
+          perspective: 1000px;
+          margin-bottom: 2rem;
+        }
+        .card .card-inner {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          transition: transform 0.8s;
+          transform-style: preserve-3d;
+        }
+        .card:hover .card-inner {
+          transform: rotateY(180deg);
+        }
+        .card .card-front, .card .card-back {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          backface-visibility: hidden;
+        }
+        .card .card-front {
+          z-index: 2;
+          background-color: #ffffff;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+        .card .card-back {
+          transform: rotateY(180deg);
+          background-color: #191414;
+          color: #fff;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+        .card .card-back p {
+          margin: 0;
+          padding: 1rem;
+          text-align: center;
+        }
+        .card img {
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+          border-radius: 0.25rem;
+        }
+        .card-title {
+          font-size: 1.25rem;
+          margin-bottom: 0.5rem;
+        }
+        .card-text {
+          font-size: 1rem;
+          margin-bottom: 1rem;
+        }
+
+        .page-link {
+            background-color: transparent;
+            border: none;
+            color: #495057;
+            font-size: 1.2rem;
+            transition: color 0.3s ease-in-out;
+          }
+      
+          .page-link:hover,
+          .page-link:focus {
+            color: #198754;
+            outline: none;
+          }
+      
+          .page-item.active .page-link {
+            color: #fff;
+            background-color: #198754;
+            border-color: #198754;
+          }
+      
+          .page-link-animate {
+            position: relative;
+          }
+      
+          .page-link-animate:before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #198754;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease-in-out;
+          }
+      
+          .page-link-animate:hover:before,
+          .page-link-animate:focus:before {
+            transform: scaleX(1);
+          }
+
+          .page-link {
+            background-color: transparent;
+            border: none;
+            color: #495057;
+            font-size: 1.2rem;
+            transition: color 0.3s ease-in-out;
+          }
+      
+          .page-link:hover,
+          .page-link:focus {
+            color: #198754;
+            outline: none;
+          }
+      
+          .page-item.active .page-link {
+            color: #fff;
+            background-color: #198754;
+            border-color: #198754;
+          }
+      
+          .page-link-animate {
+            position: relative;
+          }
+      
+          .page-link-animate:before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #198754;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease-in-out;
+          }
+      
+          .page-link-animate:hover:before,
+          .page-link-animate:focus:before {
+            transform: scaleX(1);
+          }
+      </style>
+
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="preloader-circle"></div>
+        <div class="preloader-img">
+            <img src="img/core-img/leaf.png" alt="">
+        </div>
+    </div>
+
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area">
+
+        <!-- ***** Top Header Area ***** -->
+        <div class="top-header-area">
+            <div class="container">
+                
+                <div class="row">
+                    <div class="col-12">
+                        <div class="top-header-content d-flex align-items-center justify-content-between">
+                            <!-- Top Header Content -->
+                            <div class="top-header-meta">
+                                <a href="#" data-toggle="tooltip" data-placement="bottom" title="infodeercreative@gmail.com"><i class="fa fa-envelope-o" aria-hidden="true"></i> <span>Email: infodeercreative@gmail.com</span></a>
+                                <a href="#" data-toggle="tooltip" data-placement="bottom" title="+1 234 122 122"><i class="fa fa-phone" aria-hidden="true"></i> <span>Call Us: +1 234 122 122</span></a>
+                            </div>
+
+                            <!-- Top Header Content -->
+                            <div class="top-header-meta d-flex">
+                                <!-- Language Dropdown -->
+                                <div class="language-dropdown">
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle mr-30" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">USA</a>
+                                            <a class="dropdown-item" href="#">UK</a>
+                                            <a class="dropdown-item" href="#">Bangla</a>
+                                            <a class="dropdown-item" href="#">Hindi</a>
+                                            <a class="dropdown-item" href="#">Spanish</a>
+                                            <a class="dropdown-item" href="#">Latin</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Login -->
+                                
+                                <!-- Cart -->
+                                <div class="cart">
+                                    <a href="cart.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i> <span>Cart <span class="cart-quantity">(1)</span></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ***** Navbar Area ***** -->
+        <div class="alazea-main-menu">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Menu -->
+                    <nav class="classy-navbar justify-content-between" id="alazeaNav">
+
+                        <!-- Nav Brand -->
+                        <a href="index.html" class="nav-brand"><h3 style="color:lawngreen">GO GREEN</h3></a>
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+
+                            <!-- Close Button -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            <!-- Navbar Start -->
+                            <div class="classynav">
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    
+                                    <li><a href="#">Pathalogy</a>
+                                        
+                                    </li>
+                                    <li><a href="shop.html">Shop</a>
+                                      <ul class="dropdown">  
+  
+                                        <li><a href="cart.html">cart</a></li>
+                                        <li><a href="checkout.html">BILLING DETAILS</a></li>
+        
+                            </ul>
+                                    
+                                    
+                                    </li>
+                                    
+                                    <li><a href="blog.html">blog</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+
+                                <!-- Search Icon -->
+                                <div id="searchIcon">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </div>
+
+                            </div>
+                            <!-- Navbar End -->
+                        </div>
+                    </nav>
+
+                    <!-- Search Form -->
+                    <div class="search-form">
+                        <form action="#" method="get">
+                            <input type="search" name="search" id="search" placeholder="Type keywords &amp; press enter...">
+                            <button type="submit" class="d-none"></button>
+                        </form>
+                        <!-- Close Icon -->
+                        <div class="closeIcon"><i class="fa fa-times" aria-hidden="true"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Breadcrumb Area Start ##### -->
+    <div class="breadcrumb-area" style="background-color: #f0f2eb;">
+        <!-- Top Breadcrumb Area -->
+        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/24.jpg);">
+            <h2 style="color:lawngreen">PATHALOGY</h2>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Shop</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Breadcrumb Area End ##### -->
+
+    <!-- ##### Shop Area Start ##### -->
+    
+    <section class="shop-page section-padding-0-100" style="background-color: #f0f2eb;">
+    
+        
+        <div class="container">
+            <div class="card-container">
+              <div class="card">
+                <div class="card-inner">
+                  <div class="card-front">
+                    <img class="card-img-top" src="img/bg-img/brijal.png" alt="Card image">
+                    <div class="card-body">
+                      <h5 class="card-title">Brinjal</h5>
+                      <p class="card-text">Verticillium Wilt</p>
+                    </div>
+                  </div>
+                  <div class="card-back">
+                    <p> <br>Symptoms and Signs<br>High humidity favours the development of the disease. The symptoms first appear as small watersoaked lesions on the fruit, which later enlarges in size considerably. <br> Management<br>man Removal and destruction of the affected fruits and spraying the crop with Difolatan (0.3%)
+                      thrice at an interval of 10 days effectively controls the disease. </p>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-inner">
+                  <div class="card-front">
+                    <img class="card-img-top" src="img/bg-img/ridge gourd (1).png" alt="Card image">
+                    <div class="card-body">
+                      <h5 class="card-title">Ridge gourd</h5>
+                      <p class="card-text">Anthracnose  Powdery mildew </p>
+                    </div>
+                  </div>
+                  <div class="card-back">
+                    <p><br>Symptoms and Signs<br>Both downy mildew and anthracnose appear to be largely affected by humid conditions and free moisture in the form of dew or rain are necessary for infection and rainy conditions lead to their epidemic build up <br> Management<br> Avoid irrigation systems that wet leaves. Sanitation. Rake and dispose of fallen leaves and twigs during the growing season and in fall.</p>
+                  </div>
+                </div>
+            </div>
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-front">
+                  <img class="card-img-top" src="img/bg-img/corinder.png"alt="Card image">
+                  <div class="card-body">
+                    <h5 class="card-title">Coriander</h5>
+                    <p class="card-text">Powdery mildew</p>
+                  </div>
+                </div>
+                <div class="card-back">
+                  <p><br>Symptoms and Signs<br>It appears as small, white, powdery patches on young parts of stems, leaves and buds which increases in size, and coalesce to cover entire area of leaf surface. Affected leaves are reduced in size and distorted.<br> Management<br>Choose Resistant Crop Strains2. Avoid Watering from Above4. Maintain Good Lighting or Sunlight </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+            <div class="card-container">
+              <div class="card">
+                <div class="card-inner">
+                  <div class="card-front">
+                    <img class="card-img-top" src="img/bg-img/fenugreek-leaves.png" alt="Card image">
+                    <div class="card-body">
+                      <h5 class="card-title">Fenugreek leaves</h5>
+                      <p class="card-text">Damping off</p>
+                    </div>
+                  </div>
+                  <div class="card-back">
+                    <p><br>Symptoms and Signs<br>The emerged seedlings exhibit water soaked discoloured, soft basal rot of the stem due to the death of cortical tissues.
+                      The rotted seedlings emit bad odour.<br> Management<br>planting fungicide-treated seed directly into the garden. Other preventative measures include using well-drained soil and avoiding overcrowding of plants. Also, clean out all pots thoroughly before reuse and discard contaminated soil.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-inner">
+                  <div class="card-front">
+                    <img class="card-img-top" src="img/bg-img/palak.png" alt="Card image">
+                    <div class="card-body">
+                      <h5 class="card-title">Spinach</h5>
+                      <p class="card-text">Anthracnose</p>
+                    </div>
+                  </div>
+                  <div class="card-back">
+                    <p>  <br>Symptoms and Signs<br>
+                      Initial symptoms of anthracnose are small, circular, water‑soaked lesions on both young and old leaves. Lesions later enlarge, turn brown to tan in color. <br>Management<br>
+                      Use disease-free seed. Reduce leaf moisture by avoiding sprinkler irrigation if possible. Be sure spinach fields are adequately fertilized. Resistant varieties are being developed by plant breeders.</p>
+                  </div>
+                </div>
+            </div>
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-front">
+                  <img class="card-img-top" src="img/bg-img/urada.png" alt="Card image">
+                  <div class="card-body">
+                    <h5 class="card-title">Blackgram</h5>
+                    <p class="card-text">Bacterial leaf blight</p>
+                  </div>
+                </div>
+                <div class="card-back">
+                  <p> <br>Symptoms and Signs<br> Moist weather and splattering rains are conducive to disease development. Most outbreaks of the disease can be traced back to heavy rainstorms that occur in the area.<br>Management<br>This is a common disease of blackgram occurring on the foliage at any stage of the growth.
+                    The fungus attacks the foliage causing characteristic leaf spots and blight. Early blight is first observed on the plants as small</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+            <div class="card-container">
+              <div class="card">
+                <div class="card-inner">
+                  <div class="card-front">
+                    <img class="card-img-top" src="img/bg-img/tarmi.png" alt="Card image">
+                    <div class="card-body">
+                      <h5 class="card-title">Turmeric</h5>
+                      <p class="card-text">Rhizome Rot</p>
+                    </div>
+                  </div>
+                  <div class="card-back">
+                    <p><br>Symptoms and Signs<br> The collar region of the affected pseudostem becomes water soaked and the rotting spreads to the rhizome resulting in soft rot.
+                      At a later stage root infection is also noticed.<br>Management<br>in diseased rhizomes kept for sowing and (b) through resting structures like chlamydospores and oospores that reach the soil from infected rhizomes.  </p>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-inner">
+                  <div class="card-front">
+                    <img class="card-img-top" src="img/bg-img/soya.png" alt="Card image">
+                    <div class="card-body">
+                      <h5 class="card-title">Soybean</h5>
+                      <p class="card-text">Bean Anthracnose</p>
+                    </div>
+                  </div>
+                  <div class="card-back">
+                    <p><br>Symptoms and Signs<br>
+                      This anthracnose fungus infects leaves, stems, and pods of common bean plants. The most characteristic symptom of the disease is the black-red sunken cankers or spots that develop on infected pods.<br>Management<br>
+                      Plant certified disease-free seed that was grown in areas unfavorable for anthracnose (e.g., California or Idaho).
+                      Plant resistant varieties, when possible.</p>
+                  </div>
+                </div>
+            </div>
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-front">
+                  <img class="card-img-top" src="img/bg-img/Okra.png" alt="Card image">
+                  <div class="card-body">
+                    <h5 class="card-title">Okra</h5>
+                    <p class="card-text">Charcoal rot</p>
+                  </div>
+                </div>
+                <div class="card-back">
+                  <p><br>Symptoms and Signs<br>Charcoal rot, also known as dry-weather wilt is caused by the fungus Macrophomina phaseolina, As the disease advances, leaflets yellow.<br>Management<br>Charcoal rot thrives in the hottest, driest part of the growing season,when there is a high level of the pathogen in the soil and when plants are under stress from hot dry weather.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <!-- Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+                        <!-- Pagination -->
+                        <div class="container my-5">
+                            <nav>
+                              <ul class="pagination justify-content-center">
+                                <li class="page-item">
+                                  <a class="page-link page-link-animate" href="Pathalogy.html" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                    <span class="visually-hidden">Previous</span>
+                                  </a>
+                                </li>
+                                <li class="page-item active" aria-current="page">
+                                  <a class="page-link page-link-animate" href="Pathalogy.html">1</a>
+                                </li>
+                                <li class="page-item"><a class="page-link page-link-animate" href="pathalogy1.html">2</a></li>
+                                <li class="page-item"><a class="page-link page-link-animate" href="pathalogy2.html">3</a></li>
+                                <li class="page-item"><a class="page-link page-link-animate" href="contact.html">4</a></li>
+                                <li class="page-item">
+                                  <a class="page-link page-link-animate" href="pathalogy.html" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                    <span class="visually-hidden">Next</span>
+                                  </a>
+                                </li>
+                              </ul>
+                            </nav>
+                          </div>
+                          <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </section>
+    <!-- ##### Shop Area End ##### -->
+
+    <!-- ##### Footer Area Start ##### -->
+    <footer class="footer-area bg-img" style="background-image: url(img/bg-img/fudd.webp);">
+        <!-- Main Footer Area -->
+        <div class="main-footer-area">
+            <div class="container">
+                <div class="row">
+
+                    <!-- Single Footer Widget -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single-footer-widget">
+                            <div class="footer-logo mb-30">
+                                <a href="#"><img src="img/core-img/loa.png" alt=""></a>
+                            </div>
+                            <p>PIONEERING WORLD OF ORGANIC FARMING WITH OUR SERVICES</p>
+                            <div class="social-info">
+                              <a href="https://www.facebook.com/profile.php?id=100091486868831&mibextid=ZbWKwL"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                              <a href="https://twitter.com/go_green_93?t=RW-UC_QNqGFZIeZQ2lR-rQ&s=08"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                              <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                              <a href="https://instagram.com/go_green_93?igshid=YmMyMTA2M2Y="><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                              <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                          </div>
+                        </div>
+                    </div>
+
+                    <!-- Single Footer Widget -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single-footer-widget">
+                            <div class="widget-title">
+                                <h5>QUICK LINK</h5>
+                            </div>
+                            <nav class="widget-nav">
+                                <ul>
+                                    <li><a href="#">Purchase</a></li>
+                                    <li><a href="#">FAQs</a></li>
+                                    <li><a href="#">Payment</a></li>
+                                    <li><a href="#">News</a></li>
+                                    <li><a href="#">Return</a></li>
+                                    <li><a href="#">Advertise</a></li>
+                                    <li><a href="#">Shipping</a></li>
+                                    <li><a href="#">Career</a></li>
+                                    <li><a href="#">Orders</a></li>
+                                    <li><a href="#">Policities</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <!-- Single Footer Widget -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single-footer-widget">
+                            <div class="widget-title">
+                                <h5>BEST SELLER</h5>
+                            </div>
+
+                            <!-- Single Best Seller Products -->
+                            <div class="single-best-seller-product d-flex align-items-center">
+                                <div class="product-thumbnail">
+                                    <a href="shop-details.html"><img src="img/bg-img/win.webp" alt=""></a>
+                                </div>
+                                <div class="product-info">
+                                    <a href="shop-details.html">potting-soil mix</a>
+                                    <p>Rs109</p>
+                                </div>
+                            </div>
+
+                            <!-- Single Best Seller Products -->
+                            <div class="single-best-seller-product d-flex align-items-center">
+                                <div class="product-thumbnail">
+                                    <a href="shop-details.html"><img src="img/bg-img/organic-manure.webp" alt=""></a>
+                                </div>
+                                <div class="product-info">
+                                    <a href="shop-details.html">organic-manure</a>
+                                    <p>Rs199</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Single Footer Widget -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single-footer-widget">
+                            <div class="widget-title">
+                                <h5>CONTACT</h5>
+                            </div>
+
+                            <div class="contact-information">
+                                <p><span>Address:</span> A/P sangli 416416 main road sangli </p>
+                                <p><span>Phone:</span> +1 234 122 122</p>
+                                <p><span>Email:</span> GoGREEN.info.@gmail.com</p>
+                                <p><span>Open hours:</span> Mon - Sun: 8 AM to 9 PM</p>
+                                <p><span>Happy hours:</span> Sat: 2 PM to 4 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Bottom Area -->
+        <div class="footer-bottom-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="border-line"></div>
+                    </div>
+                    <!-- Copywrite Text -->
+                    <div class="col-12 col-md-6">
+                        <div class="copywrite-text">
+                            <p>&copy; <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a target="_blank">GoGREEN</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+</p>
+                        </div>
+                    </div>
+                    <!-- Footer Nav -->
+                    <div class="col-12 col-md-6">
+                        <div class="footer-nav">
+                            <nav>
+                                <ul>
+                                    <li><a href="#">Home</a></li>
+                                    <li><a href="#">About</a></li>
+                                    <li><a href="#">Service</a></li>
+                                    <li><a href="#">Portfolio</a></li>
+                                    <li><a href="#">Blog</a></li>
+                                    <li><a href="#">Contact</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ##### Footer Area End ##### -->
+
+    <!-- ##### All Javascript Files ##### -->
+    <!-- jQuery-2.2.4 js -->
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script src="js/plugins/plugins.js"></script>
+    <!-- Active js -->
+    <script src="js/active.js"></script>
+</body>
+
+</html>

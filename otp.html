@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        />
+        <link rel="stylesheet" href="style.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+            integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+            crossorigin="anonymous"
+        />
+        <title>🔥Project Create OTP - HTML/SCSS/JavaScript🌈</title>
+       <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; }
+          
+          html,
+          body {
+            overflow-x: hidden; }
+          
+          body {
+            min-height: 100vh;
+            background-color: #f4f4f4; }
+          
+          .btn-verify,
+          .btn-continue {
+            width: 100%;
+            color: #000;
+            border-radius: 10px;
+            background-color: #ffdc3d;
+            padding-left: 30px;
+            padding-right: 30px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; }
+          
+          .container-content {
+            position: relative;
+            min-height: 580px;
+            width: 300px;
+            margin: 0 auto; }
+          
+          .mobile-verify,
+          .otp-container,
+          .box-verify {
+            top: 0;
+            left: 0;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border-radius: 30px;
+            padding: 30px 35px;
+            background-color: #fff; }
+          
+          .otp-container,
+          .mobile-verify {
+            box-shadow: 0 0 20px 20px #e2e2e2;
+            z-index: 10;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+            .otp-container .nav,
+            .mobile-verify .nav {
+              position: relative; }
+              .otp-container .nav p,
+              .mobile-verify .nav p {
+                font-weight: 500; }
+            .otp-container .text p,
+            .mobile-verify .text p {
+              color: rgba(61, 61, 61, 0.8); }
+            .otp-container .keyboard,
+            .mobile-verify .keyboard {
+              margin: 0 -4px; }
+              .otp-container .keyboard .num,
+              .otp-container .keyboard .remove,
+              .mobile-verify .keyboard .num,
+              .mobile-verify .keyboard .remove {
+                color: #000;
+                font-weight: 500;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                border-radius: 20px;
+                padding: 10px 0;
+                width: calc(33.3333% - 8px);
+                margin: 0 4px 8px;
+                text-align: center;
+                background-color: rgba(241, 241, 241, 0.8);
+                cursor: pointer;
+                transition: all 0.2s linear; }
+                .otp-container .keyboard .num:hover, .otp-container .keyboard .num.active,
+                .otp-container .keyboard .remove:hover,
+                .otp-container .keyboard .remove.active,
+                .mobile-verify .keyboard .num:hover,
+                .mobile-verify .keyboard .num.active,
+                .mobile-verify .keyboard .remove:hover,
+                .mobile-verify .keyboard .remove.active {
+                  background-color: rgba(218, 218, 218, 0.8); }
+              .otp-container .keyboard .num-n,
+              .mobile-verify .keyboard .num-n {
+                cursor: default;
+                background-color: transparent; }
+                .otp-container .keyboard .num-n:hover,
+                .mobile-verify .keyboard .num-n:hover {
+                  background-color: transparent; }
+          
+          .mobile-verify {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-100%);
+            z-index: 5;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+            .mobile-verify .text p {
+              margin-bottom: 10px;
+              text-align: center; }
+            .mobile-verify .keyboard {
+              margin-top: auto; }
+            .mobile-verify .phone-num-input {
+              display: flex;
+              align-items: center;
+              margin-bottom: 15px; }
+              .mobile-verify .phone-num-input label {
+                font-size: 13px; }
+              .mobile-verify .phone-num-input .form-input input {
+                width: 100%;
+                outline: none;
+                padding: 5px 10px;
+                border-radius: 5px;
+                border: 3px solid #e7e7e7;
+                text-align: center;
+                font-weight: 500; }
+              .mobile-verify .phone-num-input .form-input input:focus {
+                border: 3px solid transparent; }
+            .mobile-verify .text-danger {
+              font-size: 12px; }
+          
+          .otp-container .nav {
+            margin-bottom: 20px; }
+            .otp-container .nav i {
+              cursor: pointer; }
+              .otp-container .nav i:hover {
+                color: rgba(61, 61, 61, 0.7); }
+            .otp-container .nav p {
+              position: absolute;
+              left: 50%;
+              transform: translateX(-50%);
+              width: 130px;
+              margin-bottom: 0;
+              text-align: center; }
+          .otp-container .otp-input .input {
+            width: 25%;
+            height: 51px;
+            border-radius: 15px;
+            border: none;
+            outline: none;
+            text-align: center;
+            background-color: rgba(225, 225, 225, 0.8);
+            font-weight: 500; }
+            .otp-container .otp-input .input:not(:last-child) {
+              margin-right: 8px; }
+          .otp-container .resend-code {
+            margin-bottom: 10px; }
+          .otp-container .btn-resend {
+            transition: all 0.2s linear;
+            cursor: pointer;
+            font-weight: 500; }
+            .otp-container .btn-resend:hover {
+              color: #000 !important; }
+          .otp-container .text-danger {
+            margin-bottom: 10px; }
+          
+          .mobile-verify.go-right {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0); }
+          
+          .otp-container.go-right {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(100%); }
+          
+          .box-verify {
+            backface-visibility: hidden;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 15;
+            align-items: center;
+            transform: scale(0.8);
+            transition: transform 0.4 cubic-bezier(0.165, 0.84, 0.44, 1); }
+            .box-verify i {
+              font-size: 50px; }
+            .box-verify p {
+              margin-top: 30px;
+              text-align: center;
+              font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+              font-weight: 500; }
+              .box-verify p span {
+                display: inline-block;
+                padding-top: 10px; }
+            .box-verify .btn-return {
+              cursor: pointer;
+              font-weight: 500; }
+          
+          .box-verify.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1); }
+          
+          /*# sourceMappingURL=style.css.map */
+          
+       </style>
+    </head>
+    
+    <body class="d-flex align-items-center justify-content-center">
+        <div class="container-content">
+            <div class="mobile-verify go-right active-box">
+                <div
+                    class="nav d-flex align-items-center justify-content-center"
+                >
+                    <p>Mobile Verification</p>
+                </div>
+                <div class="text">
+                    <p>
+                        Please enter your mobile <br />number to verify your
+                        account
+                    </p>
+                    <p>You'll receive a 4 digit code <br />to verify</p>
+                </div>
+                <div class="phone-num-input">
+                    <div class="form-input">
+                        <label for="phone-number">Enter your phone</label>
+                        <input
+                            type="text"
+                            autocomplete="off"
+                            id="phone-number"
+                        />
+                        <span class="text-danger"></span>
+                    </div>
+                </div>
+                <button class="btn btn-continue">Send OTP</button>
+                <div class="keyboard d-flex flex-wrap">
+                    <span class="num-1 num" data-key="1">1</span>
+                    <span class="num-2 num" data-key="2">2</span>
+                    <span class="num-3 num" data-key="3">3</span>
+                    <span class="num-4 num" data-key="4">4</span>
+                    <span class="num-5 num" data-key="5">5</span>
+                    <span class="num-6 num" data-key="6">6</span>
+                    <span class="num-7 num" data-key="7">7</span>
+                    <span class="num-8 num" data-key="8">8</span>
+                    <span class="num-9 num" data-key="9">9</span>
+                    <span class="num-n num"></span>
+                    <span class="num-0 num" data-key="0">0</span>
+                    <span class="remove" data-key="backspace"
+                        ><i class="fas fa-backspace"></i
+                    ></span>
+                </div>
+            </div>
+            <div class="otp-container go-right">
+                <div class="nav d-flex align-items-center">
+                    <i class="btn-back fas fa-arrow-left"></i>
+                    <p>Verification Code</p>
+                </div>
+                <div class="text">
+                    <p>
+                        Please type the verification <br />
+                        code sent to
+                        <span class="phone">+8412345***</span>
+                    </p>
+                    <p>
+                        The OTP will expire in
+                        <span class="expire text-dark">30s</span>
+                    </p>
+                </div>
+                <div class="otp-input d-flex">
+                    <input type="text" maxlength="1" class="input" />
+                    <input type="text" maxlength="1" class="input" />
+                    <input type="text" maxlength="1" class="input" />
+                    <input type="text" maxlength="1" class="input" />
+                </div>
+                <span class="text-danger"></span>
+                <button
+                    class="btn btn-verify d-flex align-items-center justify-content-between" id="Verify"
+                >
+                    Verify now <i class="fas fa-arrow-right"></i>
+                </button>
+                <div class="resend-code text-muted">
+                    Didn't receive code?
+                    <span class="btn-resend text-danger">Request again</span>
+                </div>
+                <div class="keyboard d-flex flex-wrap">
+                    <span class="num-1 num" data-key="1">1</span>
+                    <span class="num-2 num" data-key="2">2</span>
+                    <span class="num-3 num" data-key="3">3</span>
+                    <span class="num-4 num" data-key="4">4</span>
+                    <span class="num-5 num" data-key="5">5</span>
+                    <span class="num-6 num" data-key="6">6</span>
+                    <span class="num-7 num" data-key="7">7</span>
+                    <span class="num-8 num" data-key="8">8</span>
+                    <span class="num-9 num" data-key="9">9</span>
+                    <span class="num-n num"></span>
+                    <span class="num-0 num" data-key="0">0</span>
+                    <span class="remove" data-key="backspace"
+                        ><i class="fas fa-backspace"></i
+                    ></span>
+                </div>
+            </div>
+            <div class="box-verify">
+                <i class="fas fa-check-circle"></i>
+                <p></p>
+            </div>
+        </div>
+        <script src="app.js"></script>
+        <script>const otpContainer = document.querySelector('.otp-container');
+            const mobileVerify = document.querySelector('.mobile-verify');
+            const boxVerify = document.querySelector('.box-verify');
+            const btnContinue = document.querySelector('.btn-continue');
+            const btnResend = document.querySelector('.btn-resend');
+            const btnVerify = document.querySelector('.btn-verify');
+            const btnBack = document.querySelector('.btn-back');
+            const phoneNumber = document.getElementById('phone-number');
+            const otpInput = document.querySelectorAll('.otp-input .input');
+            const containerContent = document.querySelector('.container-content');
+            const expireEle = document.querySelector('.expire');
+            
+            // OTP
+            let expire = 30;
+            let OTP;
+            let countdown;
+            let yourInputNumber = '';
+            
+            btnContinue.addEventListener('click', () => {
+                // set default expire
+                resetStateOTP();
+                // phone number have 10 digits
+                const phoneNumberExist = phoneNumber.value.match(/^\d{10}$/g);
+            
+                if (phoneNumberExist) {
+                    // handle animate
+                    otpContainer.classList.remove('go-right');
+                    mobileVerify.classList.remove('go-right');
+                    // handle for keyboard
+                    otpContainer.classList.add('active-box');
+                    mobileVerify.classList.remove('active-box');
+            
+                    // reset alert text
+                    alertText('.phone-num-input .text-danger', '');
+                    // set phone number to DOM
+                    document.querySelector('.phone').textContent = formatPhoneNumber(
+                        phoneNumberExist
+                    );
+                    // handle OTP
+                    OTP = randomOTP();
+                    handleCountDown();
+                    alert(`Your OTP: ${OTP}`);
+                    console.log(OTP);
+                } else {
+                    alertText(
+                        '.phone-num-input .text-danger',
+                        'Please enter a valid phone number'
+                    );
+                }
+            });
+            
+            // back to set number screen
+            btnBack.addEventListener('click', () => {
+                otpContainer.classList.add('go-right');
+                otpContainer.classList.remove('active-box');
+                mobileVerify.classList.add('go-right', 'active-box');
+            });
+            
+            // handle OTP input
+            otpInput.forEach((input) => {
+                input.addEventListener('keyup', (e) => {
+                    const element = e.target;
+            
+                    if (element.value.match(/\d/)) {
+                        yourInputNumber += element.value;
+                        alertText('.otp-container .text-danger', '');
+            
+                        if (element.nextElementSibling) {
+                            element.nextElementSibling.focus();
+                        }
+                    } else {
+                        alertText(
+                            '.otp-container .text-danger',
+                            'Enter a number in each field'
+                        );
+                    }
+                });
+            });
+        
+            // handle verify button
+            btnVerify.addEventListener('click', () => {
+                const icon = boxVerify.querySelector('.fas');
+            
+                if (OTP === yourInputNumber) {
+                    if (true) {
+                     window.location.href = "index.html";
+                    }
+                    icon.classList.add('fa-check-circle');
+                    icon.classList.remove('fa-times-circle');
+                    boxVerify.querySelector('p').innerHTML = `
+                    Your account has been <br/> verified successfully
+                    <br/>
+                    
+                    
+              
+                    <span class='text-muted'>Please wait while redirecting</span>
+                    `;
+            
+                    setTimeout(() => {
+                        window.location.href = `http://127.0.0.1:5500/min%20project/contact.html`;
+                    }, 3000);
+                } else {
+                    icon.classList.remove('fa-check-circle');
+                    icon.classList.add('fa-times-circle');
+                    boxVerify.querySelector('p').innerHTML = `
+                    Verification failed
+                    <br/>
+                    <span class='text-muted'>Please <span class='btn-return text-dark'>try again</span></span>
+                    `;
+                }
+                boxVerify.classList.add('active');
+            });
+            
+            // handle btn return
+            containerContent.addEventListener('click', (e) => {
+                const element = e.target;
+                if (element.classList.contains('btn-return')) {
+                    boxVerify.classList.remove('active');
+            
+                    activeStateOTP();
+                }
+            });
+            
+            // handle btn request again
+            btnResend.addEventListener('click', activeStateOTP);
+            
+            // handle keyboard for element has class active-box
+            window.addEventListener('keydown', (e) => {
+                const key = e.key;
+                const keyEle = document.querySelector(
+                    `.active-box span[data-key='${key.toLowerCase()}']`
+                );
+            
+                if (keyEle) {
+                    keyEle.classList.add('active');
+                    setTimeout(() => {
+                        keyEle.classList.remove('active');
+                    }, 500);
+                }
+            });
+            
+            function handleCountDown() {
+                countdown = setInterval(() => {
+                    expire--;
+                    if (expire === 0) {
+                        clearInterval(countdown);
+                        OTP = null;
+                        console.log(OTP);
+                    }
+                    expireEle.textContent = expire < 10 ? '0' + expire + 's' : expire + 's';
+                }, 1000);
+            }
+            
+            function alertText(element, text) {
+                document.querySelector(`${element}`).textContent = text;
+            }
+            
+            function randomOTP() {
+                let random = '';
+                Array.from({ length: 4 }, () => {
+                    random += Math.floor(Math.random() * 10).toString();
+                });
+                return random;
+            }
+            function resetStateOTP() {
+                clearInterval(countdown);
+                expire = 30;
+                OTP = null;
+                yourInputNumber = '';
+            
+                otpInput.forEach((input) => {
+                    input.value = '';
+                });
+            }
+            function formatPhoneNumber(number) {
+                return number.toString().slice(0, 7) + '***';
+            }
+            
+            function activeStateOTP() {
+                resetStateOTP();
+            
+                OTP = randomOTP();
+                handleCountDown();
+                alert(`Your OTP: ${OTP}`);
+                console.log(OTP);
+            }
+            </script>
+           
+    </body>
+</html>

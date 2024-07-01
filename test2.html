@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #map {
+      height: 400px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+<script>
+    // Initialize the Google Maps API with your API key
+function initMap() {
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 15,
+  });
+
+  // Get the user's live location using the HTML5 Geolocation API
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      const userLocation = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      };
+
+      // Add a marker to the map at the user's location
+      const marker = new google.maps.Marker({
+        position: userLocation,
+        map: map,
+        animation: google.maps.Animation.DROP,
+      });
+
+      // Center the map on the user's location
+      map.setCenter(userLocation);
+    },
+    () => {
+      alert("Unable to retrieve your location");
+    }
+  );
+}
+</script>
+  
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=da9518d0edee4cdd34eefe1a24b84b88&callback=initMap"
+  async
+  defer
+></script>
+	<div id="map"></div>
+
+  
+</body>
+</html>
